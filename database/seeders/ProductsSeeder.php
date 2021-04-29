@@ -27,6 +27,7 @@ class ProductsSeeder extends Seeder
                  'created_at' => $faker->dateTime($max = 'now', $timezone = null),
                  'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
             
+                 
                 ]);
         
             }

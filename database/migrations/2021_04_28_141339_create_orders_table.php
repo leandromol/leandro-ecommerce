@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->timestamps();
             $table->enum('payment',['cc','crypto','paypal'])->default('cc');
-            $table->enum('state',['active','pending','finalized'])->default('pending');;
+            $table->enum('state',['active','pending','cancelled','finalized'])->default('pending');;
             $table->bigInteger('final_price');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
