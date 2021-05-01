@@ -15,10 +15,12 @@ class CreateOrdersTable extends Migration
 
     {
         Schema::create('orders', function (Blueprint $table) {
+
+            $table->charset = 'utf8mb4';
             $table->id();
             $table->timestamps();
             $table->enum('payment',['cc','crypto','paypal'])->default('cc');
-            $table->enum('state',['active','pending','cancelled','finalized'])->default('pending');;
+            $table->enum('state', ['active', 'pending', 'refunden', 'cancelled', 'finished'])->default('pending');
             $table->bigInteger('final_price');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

@@ -2,14 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
-use Database\Factories\ProductFactory;
-use Faker\Factory as Faker;
+use App\Models\ProductHasCategory;
 use Illuminate\Database\Seeder;
 
+use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
 
-class ProductsSeeder extends Seeder
+
+class Products_has_categoriesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,14 +18,9 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
-
-        Product::factory(50)->create();
         
-            }
+      ProductHasCategory:: factory(50)->create();
 
+        }
     }
-
-
-
-
 

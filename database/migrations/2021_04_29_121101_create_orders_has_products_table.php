@@ -24,6 +24,7 @@ class CreateOrdersHasProductsTable extends Migration
                 $table->foreign('order_id')->references('id')->on('orders');
                 $table->unsignedBigInteger('product_id');
                 $table->foreign('product_id')->references('id')->on('products');
+                
             });
         }
     }
