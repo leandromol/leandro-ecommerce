@@ -19,7 +19,7 @@ class Products_has_categoriesSeeder extends Seeder
     public function run()
     {
         
-      ProductHasCategory:: factory(50)->create();
+      // ProductHasCategory:: factory(50)->create();
 
         }
     }

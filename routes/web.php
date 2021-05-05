@@ -3,7 +3,8 @@
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
-use Illuminate\Support\Facades\Route;
+use illuminate\Support\Facades\Route;
+use PhpParser\Node\Stmt\Foreach_;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,28 +18,66 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    //  return view('welcome');
 
- /*
+    return view('welcome');
+});
+
+
+/*
+Route::get('/productos/{cat1}', function ($categoria = 'todas') {
+
+   // return "hola vista productos";
+
+   // return view('welcome');
+
+    switch ($categoria) {
+
+        case 'tecnologia';
+        return "productos de tecnologia";
+        break;
+      
+        case 'hogar';
+        return "productos de hogar";
+        break;
+
+        case 'todas';
+        return "retornando todos los productos";
+        break;
+
+        default:
+        return "no existe categoria";
+        break;
+
+    }
+
+});
+
+
+
+Route::get('/leer', function () {
+
+    echo  "hola";
+ 
     $producto = Product::where('id',1)->first();
     dd($producto);
- */ 
+ */
 
-  /* $producto = Product::all();    // esto es un select *, tenemos todos los registors de la tabla
+// esto es un select *, tenemos todos los registors de la tabla
+/* $producto = Product::all();    
 dd($producto);
 
 */
 
-    /*
+/*  
     $productos = Product::where('available', true)->get();   
     foreach($productos as $producto) {
         echo($producto->name);
         echo("<br>");
     } 
      
-    */
-        
-    /*  
+*/
+
+/*  
     insert
     $nuevoProducto = new Product();
     $nuevoProducto->name = "iPhone 13 super pro max";
@@ -55,19 +94,39 @@ dd($producto);
     dd($iphone13); 
     */
 
-    /* 
+/* 
     delete
     $iphone13 = Product::find(51);
     $iphone13->delete();
     dd($iphone13); 
     */
 
-    
+
+/*    
+$leandro = User::find(1);
+dd($leandro->orders()->get());
+*/
+
+/*
+$order1 = Order::find(1);
+dd ($order1 -> products);
+*/
+
+/*
     $balon = Product::find(51);
+    dd($balon->categories); 
 
-    dd($balon->categories()->get());
-
+ 
 
 });
+*/
+
+Route::get('/productos', function () {
 
 
+    $productos = Product::where('available', true)->get();
+
+    // dd($productos[0]->images[0]->url);
+    return view('components.products',compact('productos'));
+});
+ 

@@ -29,12 +29,12 @@ class CategoryFactory extends Factory
            'updated_at' => $this-> faker->dateTime($max = 'now', $timezone = null),
            */
 
-
+        /*
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
             'name' => $this->faker->unique()->randomElement(['Deportes', 'Futbol', 'Diversion', 'Accesorios_Deportivos', 'Ciclismo', 'tenis'])
 
-
+        */
 
         ];
     }

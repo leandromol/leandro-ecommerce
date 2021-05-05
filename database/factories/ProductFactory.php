@@ -22,14 +22,14 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            
+        /*   
             'name' => 'product'. $this->faker->numberBetween(1,Product::count()),
             'description' => $this->faker->text($maxNbChars = 200),
             'price' => $this->faker->numberBetween($min= 10000, $max = 1000000),
             'available'=> $this->faker->boolean($chanceOfGettingTrue = 50),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
-
+         */
 
 
         ];

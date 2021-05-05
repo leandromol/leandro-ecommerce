@@ -23,12 +23,15 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-
+            
+        /*
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
             'url' => $this->faker ->imageUrl(640,480),
-            'product_id' => $this->faker->numberBetween(1, Product::count())
+            'product_id' => $this->faker->numberBetween(1, Product::all()->count())
+        */
 
         ];
     }
 }
+

@@ -25,11 +25,13 @@ class ProductHasCategoryFactory extends Factory
     {
         return [
 
+        /*   
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
             'category_id' => $this->faker->numberBetween(1,Category::count()),
             'product_id' => $this->faker->numberBetween(1,Product::count())
-
+        
+        */    
 
         ];
     }
