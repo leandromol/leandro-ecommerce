@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -17,12 +18,17 @@ use PhpParser\Node\Stmt\Foreach_;
 |
 */
 
+
+/*
 Route::get('/', function () {
 
-    return view('welcome');
+   // return view('welcome');
+
+    $producto = Product::find(5);
+    dd($producto->name); 
 });
 
-
+*/
 /*
 Route::get('/productos/{cat1}', function ($categoria = 'todas') {
 
@@ -112,14 +118,12 @@ $order1 = Order::find(1);
 dd ($order1 -> products);
 */
 
-/*
-    $balon = Product::find(51);
-    dd($balon->categories); 
-
- 
-
-});
+  /*  $balon = Product::find(1);
+    dd($balon->images); 
 */
+
+
+/*
 
 Route::get('/productos', function () {
 
@@ -130,3 +134,6 @@ Route::get('/productos', function () {
     return view('components.products',compact('productos'));
 });
  
+*/
+
+Route::resource('products', ProductController::class);
