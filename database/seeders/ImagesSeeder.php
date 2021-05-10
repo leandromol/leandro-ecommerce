@@ -69,7 +69,7 @@ class ImagesSeeder extends Seeder
 
         DB::table('images')->insert([
             
-            'url' => 'https://tubici.com/wp-content/uploads/2020/09/bicicleta-gw-scorpion-negro-verde-casco-gw-luces-recargables.jpg',
+            'url' => 'https://http2.mlstatic.com/D_NQ_NP_866826-MCO32074641889_092019-O.jpg',
             'product_id' => 3,
             'created_at' => $faker->dateTime($max = 'now', $timezone = null),
             'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
@@ -78,7 +78,7 @@ class ImagesSeeder extends Seeder
 
         DB::table('images')->insert([
             
-            'url' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNSihZiCjX8uWdS63m0dz2YdA4QFO7usBOrQ&usqp=CAU',
+            'url' => 'https://http2.mlstatic.com/D_NQ_NP_883025-MCO40597504295_012020-O.jpg',
             'product_id' => 3,
             'created_at' => $faker->dateTime($max = 'now', $timezone = null),
             'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
@@ -97,7 +97,7 @@ class ImagesSeeder extends Seeder
 
         DB::table('images')->insert([
             
-            'url' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa2qT5Q7QgEJbO5CEjZfp_s3KVNGNNmZu3rHmYZb3c2qBZMIU5llUV4kS5N5qij5MADZI&usqp=CAU',
+            'url' => 'https://i.linio.com/p/aa32d81370693fe7e504516c394eeb90-catalog.jpg',
             'product_id' => 4,
             'created_at' => $faker->dateTime($max = 'now', $timezone = null),
             'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
@@ -106,7 +106,7 @@ class ImagesSeeder extends Seeder
 
         DB::table('images')->insert([
             
-            'url' => 'https://http2.mlstatic.com/D_NQ_NP_631236-MCO31547446172_072019-O.jpg',
+            'url' => 'https://http2.mlstatic.com/D_NQ_NP_805121-MLM26631564324_012018-O.jpg',
             'product_id' => 4,
             'created_at' => $faker->dateTime($max = 'now', $timezone = null),
             'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
@@ -122,14 +122,6 @@ class ImagesSeeder extends Seeder
             
         ]);
 
-        DB::table('images')->insert([
-            
-            'url' => 'https://exitocol.vtexassets.com/arquivos/ids/459045/termo-nike-big-mouth-blanco.jpg?v=637010776838830000',
-            'product_id' => 5,
-            'created_at' => $faker->dateTime($max = 'now', $timezone = null),
-            'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
-            
-        ]);
 
         DB::table('images')->insert([
             
@@ -148,6 +140,37 @@ class ImagesSeeder extends Seeder
             'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
             
         ]);
+
+        DB::table('images')->insert([
+            
+            'url' => 'https://http2.mlstatic.com/D_NQ_NP_953607-MCO31557179910_072019-O.jpg',
+            'product_id' => 7,
+            'created_at' => $faker->dateTime($max = 'now', $timezone = null),
+            'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
+            
+        ]);
+
+        DB::table('images')->insert([
+            
+            'url' => 'https://http2.mlstatic.com/D_NQ_NP_846721-MCO40835294576_022020-W.jpg',
+            'product_id' => 8,
+            'created_at' => $faker->dateTime($max = 'now', $timezone = null),
+            'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
+            
+        ]);
+
+        DB::table('images')->insert([
+            
+            'url' => 'https://images-na.ssl-images-amazon.com/images/I/715Jw9bpN3L._AC_UX466_.jpg',
+            'product_id' => 8,
+            'created_at' => $faker->dateTime($max = 'now', $timezone = null),
+            'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
+            
+        ]);
+
+        
+
+
 
 
     }

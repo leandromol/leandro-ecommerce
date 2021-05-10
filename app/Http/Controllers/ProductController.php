@@ -19,7 +19,22 @@ class ProductController extends Controller
         $products = Product::where('available',true)->get();
         $categories = Category::all();
         return view('components/products.index',compact('products','categories'));
+       
     }
+
+
+    public function index2()
+    {
+
+     /*   $products = Product::all();
+        $categories = Category::all();
+        return view('components/products.index2',compact('products','categories'));
+      */ 
+    }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +43,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
+       $categories = Category::all();
+       return view('components/products.create',compact('categories')); 
+
     }
 
     /**
@@ -39,7 +57,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         dd ($request);
+
+         $dataProductoForm = $request->validate([
+            'name' => ['string', 'required'],
+            'description' => ['string', 'required'],
+            'price' => ['numeric','required'],
+            'stock' => ['numeric','required'],
+            'categories' => ['required'],
+            'available' => ['nullable']
+        ]);
+
+        $newProduct = new Product();
+        $newProduct->name = $dataProductoForm['name'];
+        $newProduct->description = $dataProductoForm['description'];
+        $newProduct->price = $dataProductoForm['price'];
+        $newProduct->stock = $dataProductoForm['stock'];
+        
+        /*
+        isset($dataProductoForm['available']) ? $newProduct->available = true : $newProduct->available = false;
+        */
+
+        $newProduct ->save();
+
+    /*    foreach ($dataProductoForm['categories'] as $category) {
+            $cat = new ProductHasCategory();
+            $cat->product_id =  $newProduct->id;
+            $cat->category_id = $category;
+            $cat->save();}
+        
+        return redirect()->route('products.index');
+    */
+
     }
 
     /**
@@ -65,7 +114,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        
+      /*  $products = Product::all();
+        $categories = Category::all();
+        return view('components/products.index2',compact('products','categories'));
+    */
+
     }
 
     /**

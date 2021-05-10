@@ -15,13 +15,10 @@
                                         <a href="{{ route ('products.index')}}">Home</a></li>
                                     <li class="has-separator">
 
-                                        <a href="shop-side-version-2.html">Electronics</a></li>
+
+                                        <a href="shop-side-version-2.html">{{$product->name}}</a></li>
                                     <li class="has-separator">
 
-                                        <a href="shop-side-version-2.html">DSLR Cameras</a></li>
-                                    <li class="is-marked">
-
-                                        <a href="shop-side-version-2.html">Nikon Cameras</a></li>
                                 </ul>
                             </div>
                             <!--====== End - Product Breadcrumb ======-->
@@ -33,29 +30,14 @@
                                     <div id="pd-o-initiate">
 
 
-                                    @foreach ($product->images as $image)
-
+                               
+                                        @foreach ($product->images as $image)
                                         <div class="pd-o-img-wrap" data-src="{{ $image->url }}">
-
-                                        <img class="u-img-fluid" src="{{ $image->url }}" data-zoom-image="{{ $image->url }}" alt=""></div>
-                                    
+    
+                                            <img class="u-img-fluid" src="{{ $image->url }}"
+                                                data-zoom-image="{{ $image->url }}" alt="">
+                                        </div>
                                     @endforeach
-
-
-                                    <!--  <div class="pd-o-img-wrap" data-src="images/product/product-d-2.jpg">
-
-                                            <img class="u-img-fluid" src="images/product/product-d-2.jpg" data-zoom-image="images/product/product-d-2.jpg" alt=""></div>
-                                        <div class="pd-o-img-wrap" data-src="images/product/product-d-3.jpg">
-
-                                            <img class="u-img-fluid" src="images/product/product-d-3.jpg" data-zoom-image="images/product/product-d-3.jpg" alt=""></div>
-                                        <div class="pd-o-img-wrap" data-src="images/product/product-d-4.jpg">
-
-                                            <img class="u-img-fluid" src="images/product/product-d-4.jpg" data-zoom-image="images/product/product-d-4.jpg" alt=""></div>
-                                        <div class="pd-o-img-wrap" data-src="images/product/product-d-5.jpg">
-
-                                            <img class="u-img-fluid" src="images/product/product-d-5.jpg" data-zoom-image="images/product/product-d-5.jpg" alt=""></div>
-                                    
-                                        -->    
 
                                         
                                     </div>
@@ -65,21 +47,18 @@
                                 <div class="u-s-m-t-15">
                                     <div class="slider-fouc">
                                         <div id="pd-o-thumbnail">
-                                            <div>
+                                            
+                                            
+                                            @foreach ($product->images as $image)
 
-                                                <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt=""></div>
                                             <div>
+    
+                                                <img class="u-img-fluid" src="{{ $image->url }}" alt="">
+    
+                                            </div>
+                                        @endforeach
 
-                                                <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt=""></div>
-                                            <div>
 
-                                                <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt=""></div>
                                         </div>
                                     </div>
                                 </div>
@@ -96,27 +75,82 @@
                                 <div>
                                     <div class="pd-detail__inline">
 
-                                        <span class="pd-detail__price">${{ $product ->price}}</span>
+                                        <span class="pd-detail__price">${{ $product ->price - (($product ->discount/100)*$product ->price)}}</span>
 
-                                        <span class="pd-detail__discount">(76% OFF)</span><del class="pd-detail__del">$28.97</del></div>
+                                        <span class="pd-detail__discount"> ({{ $product->discount}} % OFF )</span><del class="pd-detail__del"> {{$product ->price}} </del></div>
+
+
                                 </div>
                                 <div class="u-s-m-b-15">
-                                    <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <div class="pd-detail__rating gl-rating-style">
+
+                                         @switch($product->score)
+                                             @case(1)
+                                             <i class="fas fa-star"></i>
+                                             <a> score </a>
+                                                 @break
+                                             @case(2)
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <a> score </a>
+                                                 @break
+                                            @case(3)
+                                                 <i class="fas fa-star"></i>
+                                                 <i class="fas fa-star"></i>
+                                                 <i class="fas fa-star"></i>
+                                                 <a> score </a>
+                                                 @break
+                                            @case(4)
+                                                 <i class="fas fa-star"></i>
+                                                 <i class="fas fa-star"></i>
+                                                 <i class="fas fa-star"></i>
+                                                 <i class="fas fa-star"></i>
+                                                 <a> score </a>
+                                                 @break 
+                                            @case(5)
+                                                 <i class="fas fa-star"></i>
+                                                 <i class="fas fa-star"></i>
+                                                 <i class="fas fa-star"></i>
+                                                 <i class="fas fa-star"></i>
+                                                 <i class="fas fa-star"></i>
+                                                 <a> score </a>
+                                                 @break  
+                                                        
+                                             @default
+                                             <i class="fas fa-star-half-alt"></i>
+                                         @endswitch
+
+                                         <br>
+
+
+                                <!--    <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                -->
+
+
 
                                         <span class="pd-detail__review u-s-m-l-4">
 
-                                            <a data-click-scroll="#view-review">23 Reviews</a></span></div>
+                                            <!--   <a data-click-scroll="#view-review">23 Reviews</a></span></div>    -->
+
+                                            
                                 </div>
                                 <div class="u-s-m-b-15">
                                     <div class="pd-detail__inline">
 
-                                        <span class="pd-detail__stock">200 in stock</span>
-
-                                        <span class="pd-detail__left">Only 2 left</span></div>
-                                </div>
+                                        <span class="pd-detail__stock">{{ $product->stock }} in stock </span>
+                                        
+                                         
+                                <!--        <span class="pd-detail__left">Only 2 left</span></div>    -->
+                                
+                                    </div>
+                                    
                                 <div class="u-s-m-b-15">
 
-                                    <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                    <span class="pd-detail__preview-desc">{{$product->description}}.</span></div>
                                 <div class="u-s-m-b-15">
                                     <div class="pd-detail__inline">
 
@@ -213,9 +247,13 @@
                                             <a class="nav-link" data-toggle="tab" href="#pd-tag">TAGS</a></li>
                                         <li class="nav-item">
 
-                                            <a class="nav-link" id="view-review" data-toggle="tab" href="#pd-rev">REVIEWS
+                                         <!--   <a class="nav-link" id="view-review" data-toggle="tab" href="#pd-rev">REVIEWS
 
                                                 <span>(23)</span></a></li>
+
+                                         -->
+                                         
+                                         
                                     </ul>
                                 </div>
                                 <div class="tab-content">
@@ -224,9 +262,9 @@
                                     <div class="tab-pane fade show active" id="pd-desc">
                                         <div class="pd-tab__desc">
                                             <div class="u-s-m-b-15">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                                <p>{{$product->description}}.</p>
                                             </div>
-                                            <div class="u-s-m-b-30"><iframe src="https://www.youtube.com/embed/qKqSBm07KZk" allowfullscreen></iframe></div>
+                                            <div class="u-s-m-b-30"><iframe src="{{$product->video}}" allowfullscreen></iframe></div>
                                             <div class="u-s-m-b-30">
                                                 <ul>
                                                     <li><i class="fas fa-check u-s-m-r-8"></i>
@@ -240,7 +278,7 @@
                                                         <span>Returns accepted if product not as described.</span></li>
                                                 </ul>
                                             </div>
-                                            <div class="u-s-m-b-15">
+                                           <div class="u-s-m-b-15">
                                                 <h4>PRODUCT INFORMATION</h4>
                                             </div>
                                             <div class="u-s-m-b-15">
@@ -289,6 +327,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                
                                     <!--====== End - Tab 1 ======-->
 
 

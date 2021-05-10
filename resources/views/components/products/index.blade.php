@@ -11,6 +11,7 @@
                                 <div class="section__text-wrap">
                                     <h1 class="section__heading u-c-secondary u-s-m-b-12">TOP TRENDING</h1>
 
+
                                     <span class="section__span u-c-silver">CHOOSE CATEGORY</span>
                                 </div>
                             </div>
@@ -83,14 +84,53 @@
 
                                                 <span class="product-o__name">
 
-                                                    <a href="{{  route ('products.show', ['product' => $product->id] )   }}">{{ $product->name }}</a></span>
-                                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                                    <a href="{{ route ('products.show', ['product' => $product->id] ) }}">{{ $product->name }}</a></span>
+                                               
+                                                    <div class="product-o__rating gl-rating-style">
 
-                                                    <span class="product-o__review">(23)</span></div>
+                                                    @switch($product->score)
+                                                    @case(1)
+                                                    <i class="fas fa-star"></i>
+                                                    
+                                                        @break
+                                                    @case(2)
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                        @break
+                                                   @case(3)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        @break
+                                                   @case(4)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        @break 
+                                                   @case(5)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        
+                                                        @break         
+                                                               
+                                                    @default
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                @endswitch
+                                                    
+                                                    
+                                                   <!-- <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                                   -->
 
-                                                <span class="product-o__price">${{ $product ->price}}
+
+                                                    <span class="product-o__review">{{$product->score}}</span></div>
+
+                                                <span class="product-o__price">${{ $product ->price - (($product ->discount/100)*$product ->price)}}
   
-                                                    <span class="product-o__discount">$${{ $product ->price}}</span></span>
+                                                    <span class="product-o__discount">${{ $product ->price}}</span></span>
                                             </div>
                                         </div>
                                     @endforeach
