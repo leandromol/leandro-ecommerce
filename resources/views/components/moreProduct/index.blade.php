@@ -442,10 +442,26 @@
                                             <div class="product-m__name">
 
                                                 <a href="product-detail.html">{{ $product->name }}</a></div>
-                                            <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                            <div class="product-m__rating gl-rating-style">
+                                                
+                                            @for ($i = 0; $i < ($product->score); $i++)
+                                               <i class="fas fa-star"></i>
+                                            @endfor 
 
+                                            <!--
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            -->
+                                            
+                                            
                                                 <span class="product-m__review"></span></div>
-                                            <div class="product-m__price">${{ $product ->price - (($product ->discount/100)*$product ->price)}}</div>
+                                                
+                                            <div class="product-m__price">${{ $product ->price - (($product ->discount/100)*$product ->price)}}
+                                                <span class="product-o__discount">${{ $product ->price}} </span>
+                                            </div>
                                             <div class="product-m__hover">
                                                 <div class="product-m__preview-description">
 

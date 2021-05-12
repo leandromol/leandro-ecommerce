@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\MoreProductController;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
 use App\Models\Order;
@@ -137,15 +139,24 @@ Route::get('/productos', function () {
  
 */
 
+
 Route::resource('products', ProductController::class);
 
+Route::resource('moreProduct', MoreProductController::class);
 
-// Route::resource('index2', ProductController::class);
+Route::resource('cart', CartController::class);
+
+Route::get('cart/addOne/{product}', [CartController::class, 'addOne'])->name('cart.addOne');
 
 
-    Route::get('/index2', function () {
-    $products = Product::all();
-    $categories = Category::all();
-    return view('components/products.index2',compact('products', 'categories'));
 
-});
+
+
+
+
+
+
+
+
+
+

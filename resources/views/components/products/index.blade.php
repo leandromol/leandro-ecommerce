@@ -48,9 +48,7 @@
                                           <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item 
                                             @foreach ($product->categories as $category)
                                                         {{ strtoupper( $category->name ) }}
-                                            @endforeach
-                               
-                                          ">
+                                            @endforeach ">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
@@ -126,7 +124,7 @@
                                                    -->
 
 
-                                                    <span class="product-o__review">{{$product->score}}</span></div>
+                                                    <span class="product-o__review"></span></div>
 
                                                 <span class="product-o__price">${{ $product ->price - (($product ->discount/100)*$product ->price)}}
   
@@ -140,8 +138,9 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="load-more">
-
-                                    <button class="btn btn--e-brand" type="button">Load More</button></div>
+                                   
+                                    <button class="btn btn--e-brand" type="button"><a href="{{route('moreProduct.index')}}">Load More</a></button>
+                                                                                                                              
                             </div>
                         </div>
                     </div>
@@ -149,3 +148,4 @@
                 <!--====== End - Section Content ======-->
             </div>
 @endsection
+

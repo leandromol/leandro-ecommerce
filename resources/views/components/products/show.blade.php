@@ -12,7 +12,7 @@
                                     <li class="has-separator">
 
                                        
-                                        <a href="{{ route ('products.index')}}">Home</a></li>
+                                        <a href="{{route ('products.index')}}">Home</a></li>
                                     <li class="has-separator">
 
 
@@ -84,41 +84,39 @@
                                 <div class="u-s-m-b-15">
                                     <div class="pd-detail__rating gl-rating-style">
 
-                                         @switch($product->score)
-                                             @case(1)
-                                             <i class="fas fa-star"></i>
-                                             <a> score </a>
-                                                 @break
-                                             @case(2)
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                             <a> score </a>
-                                                 @break
-                                            @case(3)
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star"></i>
-                                                 <a> score </a>
-                                                 @break
-                                            @case(4)
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star"></i>
-                                                 <a> score </a>
-                                                 @break 
-                                            @case(5)
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star"></i>
-                                                 <i class="fas fa-star"></i>
-                                                 <a> score </a>
-                                                 @break  
-                                                        
-                                             @default
-                                             <i class="fas fa-star-half-alt"></i>
-                                         @endswitch
+                                        @switch($product->score)
+                                        @case(1)
+                                        <i class="fas fa-star"></i>
+                                        
+                                            @break
+                                        @case(2)
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                            @break
+                                       @case(3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            @break
+                                       @case(4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            @break 
+                                       @case(5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            
+                                            @break         
+                                                   
+                                        @default
+                                        <i class="fas fa-star-half-alt"></i>
+                                    @endswitch
+  
 
                                          <br>
 
@@ -189,17 +187,25 @@
                                     </ul>
                                 </div>
                                 <div class="u-s-m-b-15">
-                                    <form class="pd-detail__form">
+                                    <form class="pd-detail__form"  method="POST" action="{{route('cart.store')}}">
+                                        @csrf
+
+                                        <input type="hidden" name="productId" value="{{ $product->id }}"> 
+
                                         <div class="pd-detail-inline-2">
                                             <div class="u-s-m-b-15">
 
+
+                                                
                                                 <!--====== Input Counter ======-->
                                                 <div class="input-counter">
 
                                                     <span class="input-counter__minus fas fa-minus"></span>
 
-                                                    <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="1000">
-
+                                                    <input class="input-counter__text input-counter--text-primary-style" 
+                                                    name= "amount"
+                                                    type="text" value="1" data-min="1" data-max="1000">
+                                                       
                                                     <span class="input-counter__plus fas fa-plus"></span></div>
                                                 <!--====== End - Input Counter ======-->
                                             </div>

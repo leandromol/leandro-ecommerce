@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+
 class ProductController extends Controller
 {
     /**
@@ -17,23 +18,11 @@ class ProductController extends Controller
     {
 
         $products = Product::where('available',true)->get();
+       // $products = Product::all()->take(3);
         $categories = Category::all();
         return view('components/products.index',compact('products','categories'));
        
     }
-
-
-    public function index2()
-    {
-
-     /*   $products = Product::all();
-        $categories = Category::all();
-        return view('components/products.index2',compact('products','categories'));
-      */ 
-    }
-
-
-
 
 
     /**
@@ -115,11 +104,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         
-      /*  $products = Product::all();
-        $categories = Category::all();
-        return view('components/products.index2',compact('products','categories'));
-    */
-
+           //
+           
     }
 
     /**
@@ -145,3 +131,5 @@ class ProductController extends Controller
         //
     }
 }
+
+
