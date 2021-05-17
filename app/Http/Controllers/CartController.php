@@ -36,6 +36,50 @@ class CartController extends Controller
         //
     }
 
+
+    function addProductsToCart ($productSelected,$amount) {
+
+        if(session()->has('cart') == false) {
+            session()->put('cart', [ 'products' => [] ]);
+        }
+
+        //1. confirmamos si el producto que se va agregar ya esta en el carrito
+
+        $cartProducts = session()->get('cart.products');
+        
+
+        $indexFoundProduct = collect(session()->get('cart.products')) -> search(function ($cartProduct) use ($productSelected) {
+
+            return $cartProduct['product']->id == $productSelected->id ;
+        });
+
+
+
+        if($indexFoundProduct != false) {
+
+        // si ya esta en carrito
+        // sumamos al carrito la cantidad de productos con los que ya estan
+       
+        
+        $cartProducts[$indexFoundProduct]['amount'] += $amount;
+
+        //2.2 reemplazamos de nuevo todo el carrito
+
+        session()->put('cart.products',$cartProducts);
+
+        session()->flash('status',"se actualizo cantidad de $productSelected->name en el carrito");
+
+        }else {
+
+                  // si el producto aun no esta en el carrito, realizamos un push
+           
+                  
+        session()->push('cart.products', ['product'=> $productSelected, 'amount' => $amount]);   
+        session()->flash('status',"se agrego producto $productSelected->name al carrito");
+       
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -49,19 +93,16 @@ class CartController extends Controller
         
         $amount = $request -> amount;
 
-        if($request->session()->has('cart') == false) {
-            $request->session()->put('cart', [ 'products' => [] ]);
-        }
-
-        $request -> session() -> push('cart.products', ['product' => $productSelected, 'amount'=> $amount ] );
-        return redirect()->route('cart.index');
+        $this->addProductsToCart($productSelected,$amount);
+       
+        return redirect()->route('products.index');
     }
 
 
     public function addOne(Product $product)
     {
-       
-        dd($product);
+        $this->addProductsToCart($product,1);
+        return redirect()->route('products.index');
     }
 
     /**
@@ -106,6 +147,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //   dd($id);
+         
     }
 }

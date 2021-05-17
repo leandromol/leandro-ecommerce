@@ -1,3 +1,4 @@
+
 @extends('layouts.default')
 @section('content')
 
@@ -26,13 +27,13 @@
 
 
                             <form method='post' action="{{ route('products.store') }}">
-                                @csrf
+                                    @csrf
 
 
 
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input name="name" value="Iphone 14" required type="text" class="form-control" id="name"
+                                    <input name="name" value="camiseta" required type="text" class="form-control" id="name"
                                         placeholder="ingrese nombre de producto">
                                 </div>
 
@@ -40,26 +41,42 @@
                                     <label for="description">Descripcion</label>
                                     <textarea required name="description" class="form-control" id="description"
                                         placeholder="ingrese descripcion del producto" rows="3">
-                                         Nuevo iphone con mas memoria mas camaras mas precio
+                                         Camiseta deportiva, todas las tallas, todos los colores
                                             </textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="price">Precio</label>
-                                    <input name="price" value="10000000" required type="number" class="form-control"
+                                    <input name="price" value="180000" required type="number" class="form-control"
                                         placeholder="ingrese precio del producto">
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="score">Score</label>
+                                    <input name="score" value="5" required type="number" class="form-control" id="stock"
+                                        placeholder="ingrese la valoracion inicial">
+                                </div>
+
+                                <div class="form-group">
                                     <label for="stock">Stock</label>
-                                    <input name="stock" value="10" required type="number" class="form-control" id="stock"
-                                        placeholder="ingrese precio del producto">
+                                    <input name="stock" value="30" required type="number" class="form-control" id="stock"
+                                        placeholder="ingrese cantidad de productos">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name">URL Video</label>
+                                    <input name="video" value="https://www.youtube.com/watch?v=wj5pqaRRFMY" required type="text" class="form-control" id="video"
+                                        placeholder="ingrese url del video">
+                                </div>
+                                <div class="form-group">
+                                    <label for="discount">Descuento</label>
+                                    <input name="discount" value="10" required type="number" class="form-control"
+                                        placeholder="ingrese descuento del producto">
                                 </div>
 
                                 <div class="form-check">
                                     <label class="form-check-label" for="defaultCheck1">
                                         <input name="available" class="available" type="checkbox" value="" id="available">
-
                                         Disponibilidad
                                     </label>
                                 </div>
@@ -76,7 +93,7 @@
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
 
-                            </form>
+                            </form> 
 
                         </div>
                     </div>

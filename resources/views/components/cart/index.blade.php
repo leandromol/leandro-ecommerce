@@ -79,14 +79,14 @@
                                                         </span>
 
                                                         <ul class="table-p__variant-list">
-                                                            <li>
+                                                    <!--        <li>
 
                                                                 <span>Size: 22</span>
                                                             </li>
                                                             <li>
 
                                                                 <span>Color: Red</span>
-                                                            </li>
+                                                            </li> -->
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -117,12 +117,13 @@
                                             <td>
                                                 <div class="table-p__del-wrap">
 
-                                                    <a class="far fa-trash-alt table-p__delete-link" href="#"></a>
-                                                    
+                                                        <a class="far fa-trash-alt table-p__delete-link" href=""></a>
+                                                <!--    <a class="far fa-trash-alt table-p__delete-link" href="{{route('cart.destroy',$cartProduct['product']->discount)}}"></a>
+                                                 -->    
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach  
 
                                     <!--====== End - Row ======-->
 
@@ -272,3 +273,5 @@
     <!--====== End - Section 3 ======-->
 
 @endsection
+
+

@@ -40,7 +40,7 @@
     <script src="{{asset('js/jquery.shopnav.js') }}"></script>
 
     <!--====== App ======-->
-    <script src="{{asset ('js/app.js')}}"></script>
+    <script src="{{asset ('js/ludus.js')}}"></script>
  
 </body>
 

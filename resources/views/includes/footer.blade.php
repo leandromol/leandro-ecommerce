@@ -7,30 +7,30 @@
                     <span class="outer-footer__content-title">Contact Us</span>
                     <div class="outer-footer__text-wrap"><i class="fas fa-home"></i>
 
-                        <span>4247 Ashford Drive Virginia VA-20006 USA</span></div>
+                        <span>Bogota D.C</span></div>
                     <div class="outer-footer__text-wrap"><i class="fas fa-phone-volume"></i>
 
-                        <span>(+0) 900 901 904</span></div>
+                        <span>314-3997124</span></div>
                     <div class="outer-footer__text-wrap"><i class="far fa-envelope"></i>
 
-                        <span>contact@domain.com</span></div>
+                        <span>norlemobel@gmail.com</span></div>
                     <div class="outer-footer__social">
                         <ul>
                             <li>
 
-                                <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <a class="s-fb--color-hover" href="https://es-la.facebook.com/" target="_blank" ><i class="fab fa-facebook-f"></i></a></li>
                             <li>
 
-                                <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a></li>
+                                <a class="s-tw--color-hover" href="https://twitter.com/iniciarsesion?lang=es" target="_blank"><i class="fab fa-twitter"></i></a></li>
                             <li>
 
-                                <a class="s-youtube--color-hover" href="#"><i class="fab fa-youtube"></i></a></li>
+                                <a class="s-youtube--color-hover" href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
                             <li>
 
-                                <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a></li>
+                                <a class="s-insta--color-hover" href="https://www.instagram.com/?hl=es-la" target="_blank" ><i class="fab fa-instagram"></i></a></li>
                             <li>
 
-                                <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                <a class="s-gplus--color-hover" href="https://myaccount.google" target="_blank" ><i class="fab fa-google-plus-g"></i></a></li>
                         </ul>
                     </div>
                 </div>

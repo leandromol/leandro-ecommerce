@@ -1,4 +1,35 @@
 <!--====== Nav 1 ======-->
+
+
+<style>
+    /* The close button */
+    .closebtn {
+        margin-left: 15px;
+        color: red;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    /* When moving the mouse over the close button */
+    .closebtn:hover {
+        color: black;
+    }
+</style>
+
+@if (session()->has('status'))
+
+    <div class="w3-panel w3-pale-green w3-border">
+        <h3>Success!</h3>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <p>{{ session()->get('status') }}</p>
+    </div>
+
+@endif
+
+
 <nav class="primary-nav primary-nav-wrapper--border">
     <div class="container">
 
@@ -7,7 +38,7 @@
 
             <!--====== Main Logo ======-->
 
-            <a class="main-logo" href="index.html">
+            <a class="main-logo" href="{{route('products.index')}}">
 
                 <img src="{{ asset('images/logo/logo-1.png') }}" alt=""></a>
             <!--====== End - Main Logo ======-->
@@ -46,31 +77,43 @@
 
                             <span class="js-menu-toggle"></span>
                             <ul style="width:120px">
+                                
+                                
+                                @if (Auth::check())
                                 <li>
 
                                     <a href="dashboard.html"><i class="fas fa-user-circle u-s-m-r-6"></i>
 
-                                        <span>Account</span></a>
+                                        <span>{{ Auth::user()->name }}</span></a>
                                 </li>
+
                                 <li>
 
-                                    <a href="signup.html"><i class="fas fa-user-plus u-s-m-r-6"></i>
+                                    <a href="{{ route('logout')}}"><i class="fas fa-lock-open u-s-m-r-6"></i>
+
+                                        <span>Signout</span></a>
+                                </li>
+                                @else
+
+                                 
+                                <li>
+
+                                    <a href="{{ route ('register')}}"><i class="fas fa-user-plus u-s-m-r-6"></i>
 
                                         <span>Signup</span></a>
                                 </li>
                                 <li>
 
-                                    <a href="signin.html"><i class="fas fa-lock u-s-m-r-6"></i>
+                                    <a href="{{ route ('login')}}"><i class="fas fa-lock u-s-m-r-6"></i>
 
                                         <span>Signin</span></a>
                                 </li>
-                                <li>
-
-                                    <a href="signup.html"><i class="fas fa-lock-open u-s-m-r-6"></i>
-
-                                        <span>Signout</span></a>
-                                </li>
+                                    
+                                @endif  
+                               
                             </ul>
+
+
                             <!--====== End - Dropdown ======-->
                         </li>
                         <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Settings">
@@ -136,7 +179,7 @@
                         </li>
                         <li data-tooltip="tooltip" data-placement="left" title="Contact">
 
-                            <a href="tel:+0900901904"><i class="fas fa-phone-volume"></i></a>
+                            <a href="tel: 3143997124"><i class="fas fa-phone-volume"></i></a>
                         </li>
                         <li data-tooltip="tooltip" data-placement="left" title="Mail">
 
@@ -1404,7 +1447,7 @@
                     <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
                         <li>
 
-                            <a href="index.html"><i class="fas fa-home u-c-brand"></i></a>
+                            <a href="{{route ('products.index')}}"><i class="fas fa-home u-c-brand"></i></a>
                         </li>
                         <li>
 
@@ -1416,10 +1459,10 @@
 
                                 <span class="total-item-round">
                                     @if (session()->has('cart'))
-                                        {{ count(session()->get('cart.products')) }}
+                                    {{ count(session()->get('cart.products')) }}
 
                                     @else
-                                        0
+                                       0
                                     @endif
 
 
@@ -1469,8 +1512,8 @@
                                                         <span class="mini-product__quantity">
                                                             {{ $cartProduct['amount'] }} x</span>
 
-                                                        <span class="mini-product__price">$
-                                                            {{ $cartProduct['product']->price }}</span>
+                                                        <span class="mini-product__price">
+                                                            ${{ ((( $cartProduct['product']->price - ($cartProduct['product']->discount/100)* ($cartProduct['product']->price))* $cartProduct['amount'] ))}}</span>
                                                     </div>
                                                 </div>
 
@@ -1496,8 +1539,9 @@
                                         <span class="subtotal-value">
 
                                             @if (session()->has('cart'))
-                                                algun valor
-
+                                                
+                                            {{ count(session()->get('cart.products')) }}
+                                            
                                             @else
                                                 0
                                             @endif

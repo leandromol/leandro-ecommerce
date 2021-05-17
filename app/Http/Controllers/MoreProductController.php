@@ -43,6 +43,17 @@ class MoreProductController extends Controller
         //
     }
 
+
+    public function addOne(Product $product) 
+    {
+       
+
+          session()->push('cart.products', ['product' => $product, 'amount' => 1]);
+          return redirect()->route('cart.index');
+    }
+
+
+
     /**
      * Display the specified resource.
      *
