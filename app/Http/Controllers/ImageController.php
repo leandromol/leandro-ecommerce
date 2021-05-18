@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
-class MoreProductController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,9 @@ class MoreProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  
-       
-       $products = Product::where('available', true)->get();
-        $categories = Category::all();
-        return view('components/moreProduct.index', compact('products','categories'));
-
+    {
+        $products = Product::all();
+        return view('components/image.index',compact('products'));
     }
 
     /**
@@ -40,27 +37,30 @@ class MoreProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataProductoForm = $request->validate([
+            
+            'product' => ['required'],
+            
+            'img' => ['required'],
+            
+        ]);
+
+        $newImage = new Image();
+        $newImage->url = $dataProductoForm['img'];
+        $newImage->product_id = $dataProductoForm['product'];
+        
+        
+        $newImage ->save();
+        return redirect()->route('products.index');
     }
-
-
-    public function addOne(Product $product) 
-    {
-       
-
-          session()->push('cart.products', ['product' => $product, 'amount' => 1]);
-          return redirect()->route('cart.index');
-    }
-
-
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Image $image)
     {
         //
     }
@@ -68,10 +68,10 @@ class MoreProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Image $image)
     {
         //
     }
@@ -80,10 +80,10 @@ class MoreProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Image $image)
     {
         //
     }
@@ -91,10 +91,10 @@ class MoreProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Image $image)
     {
         //
     }

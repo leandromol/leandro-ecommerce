@@ -8,8 +8,10 @@ use App\Models\User;
 use Database\Seeders\ProductsSeeder;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\MoreProductController;
+use App\Http\Controllers\MoreController;
+use App\Http\Controllers\OrderController;
 use PhpParser\Node\Stmt\Foreach_;
+use App\Http\Controllers\ImageController;
 
 
 
@@ -56,11 +58,16 @@ require __DIR__.'/auth.php';
 
 Route::resource('products', ProductController::class);
 
-Route::resource('moreProduct', MoreProductController::class);
+Route::resource('more', MoreController::class);
 
 Route::resource('cart', CartController::class);
 
 Route::get('cart/addOne/{product}', [CartController::class, 'addOne'])->name('cart.addOne');
+
+Route::resource('order', OrderController::class);
+
+Route::resource('image', ImageController::class);
+
 
 
 

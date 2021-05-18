@@ -140,7 +140,7 @@
                             <div class="col-lg-12">
                                 <div class="load-more">
                                    
-                                    <button class="btn btn--e-brand" type="button"><a href="{{route('moreProduct.index')}}">Load More</a></button>
+                                    <button class="btn btn--e-brand" type="button"><a href="{{route('more.index')}}">Load More</a></button>
                                                                                                                               
                             </div>
                         </div>

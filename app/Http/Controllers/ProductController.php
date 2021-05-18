@@ -38,7 +38,7 @@ class ProductController extends Controller
        return view('components/products.create',compact('categories')); 
 
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      *
